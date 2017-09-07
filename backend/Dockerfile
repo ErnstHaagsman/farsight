@@ -21,4 +21,4 @@ ENV FLASK_APP=app.py
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
 
-CMD ["python3", "-m", "flask", "run", "--host=0.0.0.0"]
+CMD ["gunicorn", "-b", "0.0.0.0:5000", "app:app"]
