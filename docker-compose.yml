@@ -8,7 +8,17 @@ services:
       - backend
   backend:
     build: ./backend
+    environment:
+      DATABASE_URI: "postgresql://base:hunter2@db/base"
+    links:
+      - db
     ports:
       - "5000:5000"
   db:
     image: postgres:9.6
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: "base"
+      POSTGRES_PASSWORD: "hunter2"
+      POSTGRES_DB: "base"
